@@ -1,11 +1,19 @@
-package recursion.assignment;
+package modified.fibonacci;
 
 public class ModFib {
     
     //method to find the kth term in a modified fibonacci sequence where k>=0
     public static int modFibonacci(int k){
-        //if k is 0
-        if (k ==0){
+        //deal with negative input
+        //if the input is negative
+        if (k<0){
+            //throws an error to let user know the input is not allowed
+            throw new IllegalArgumentException("Cannot have a negative term for Fibonnaci sequence");
+        }
+
+
+        //else if k is 0
+        else if (k ==0){
             //return 3
             return 3;
         }
