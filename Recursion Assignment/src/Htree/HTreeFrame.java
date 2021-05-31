@@ -84,7 +84,7 @@ public class HTreeFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void EnterControlDepthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnterControlDepthActionPerformed
-        //when the button is clicked, a h tree of given depth is created
+        //when the button is clicked, a h tree of given depth is createdv   
         drawingPanel1.depth(Integer.parseInt(controlDepthText.getText()));
     }//GEN-LAST:event_EnterControlDepthActionPerformed
 

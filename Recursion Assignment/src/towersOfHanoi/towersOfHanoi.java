@@ -1,16 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package towersOfHanoi;
 
 import java.util.Scanner;
 
-/**
- *
- * @author amina
- */
 public class towersOfHanoi {
 
     //middleman method that fills in other parameters for the solve() and calls it when given only the number of disks
@@ -30,15 +22,15 @@ public class towersOfHanoi {
         if (n == 1) {
             //Print that the disk has moved from the starting peg to the end peg
             System.out.println("Move a disk from peg " + start + " to peg " + end);
-        } //when n isnt 1
-        else {
-            //recurse the method for the next larger disk, and move it to the middle from the start
-            solve(n - 1, start, end, mid);
-            System.out.println("Move a disk from peg " + start + " to " + end);
-            //recurse the method to move the disk from the middle to start
-            solve(n - 1, mid, end, start);
-
+            return;
         }
+        //recursive part
+        //recurse the method for the next larger disk, and move it to the middle from the start
+        solve(n - 1, start, end, mid);
+        System.out.println("Move a disk from peg " + start + " to " + end);
+        //recurse the method to move the disk from the middle to start
+        solve(n - 1, mid, end, start);
+
     }
 
     public static void main(String[] args) {
