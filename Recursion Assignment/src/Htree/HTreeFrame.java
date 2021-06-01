@@ -31,6 +31,7 @@ public class HTreeFrame extends javax.swing.JFrame {
         controlDepthText = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         EnterControlDepth = new javax.swing.JButton();
+        Error = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -42,7 +43,7 @@ public class HTreeFrame extends javax.swing.JFrame {
         );
         drawingPanel1Layout.setVerticalGroup(
             drawingPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 243, Short.MAX_VALUE)
+            .addGap(0, 429, Short.MAX_VALUE)
         );
 
         jLabel1.setText("Control Depth");
@@ -53,6 +54,8 @@ public class HTreeFrame extends javax.swing.JFrame {
                 EnterControlDepthActionPerformed(evt);
             }
         });
+
+        Error.setText("         ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -66,17 +69,20 @@ public class HTreeFrame extends javax.swing.JFrame {
                 .addComponent(controlDepthText, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(EnterControlDepth)
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Error)
+                .addContainerGap(431, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(drawingPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addComponent(drawingPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(controlDepthText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(EnterControlDepth))
+                    .addComponent(EnterControlDepth)
+                    .addComponent(Error))
                 .addGap(12, 12, 12))
         );
 
@@ -84,8 +90,38 @@ public class HTreeFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void EnterControlDepthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnterControlDepthActionPerformed
-        //when the button is clicked, a h tree of given depth is createdv   
-        drawingPanel1.depth(Integer.parseInt(controlDepthText.getText()));
+        //declare and initialize control depth
+        int controlDepth = 0;
+        boolean number = true;
+        
+        //try converting text in textbox to a number
+        try {
+            controlDepth = Integer.parseInt(controlDepthText.getText());
+        //catch if it is not a number
+        } catch (NumberFormatException e){
+            //set number to be false - will be used to print exception
+            number = false;
+        }
+        
+        //if the input is not a number
+        if (number==false){
+            //print appropriate error to frame
+            Error.setText("Please enter a number");
+        }
+         //if the control depth is negative
+        else if (controlDepth<0){
+            //just print an error to the frame
+            Error.setText("Depth must be positive");
+        }
+        //else
+        else{
+           //clear the label of any error
+           Error.setText("Depth must be positive");
+           //draw a h tree of the given depth
+           drawingPanel1.depth(controlDepth); 
+        }
+         
+        
     }//GEN-LAST:event_EnterControlDepthActionPerformed
 
     /**
@@ -125,6 +161,7 @@ public class HTreeFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton EnterControlDepth;
+    private javax.swing.JLabel Error;
     private javax.swing.JTextField controlDepthText;
     private Htree.drawingPanel drawingPanel1;
     private javax.swing.JLabel jLabel1;

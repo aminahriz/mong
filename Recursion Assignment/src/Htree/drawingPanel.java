@@ -17,7 +17,7 @@ public class drawingPanel extends javax.swing.JPanel {
         //calling contstructor of the paintComponent()
         super.paintComponent(g);
         //calling the recursive htree method with the inputted control depth
-        Htree(g, 120, getWidth() / 2, getHeight() / 2, controlDepth);
+        Htree(g, 300, getWidth() / 2, getHeight() / 2, controlDepth);
     }
 
     //method to get the user inputted depth from frame
@@ -55,6 +55,8 @@ public class drawingPanel extends javax.swing.JPanel {
 
     //the recursive method that creates an H tree
     public void Htree(Graphics g, int size, int x, int y, int n) {
+        
+        
         //base case: if the depth is 0
         if (n == 0) {
             //ends the method
