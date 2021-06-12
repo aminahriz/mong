@@ -18,7 +18,7 @@ public class Home extends javax.swing.JFrame {
      */
     public Home() {
         //sets bg color
-        Color m = new Color(100, 178, 223);
+        Color m = new Color(100, 178, 225);
         getContentPane().setBackground(m);
         initComponents();
     }
