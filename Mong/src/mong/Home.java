@@ -6,6 +6,9 @@
 package mong;
 
 import java.awt.Color;
+import java.awt.Desktop;
+import java.io.IOException;
+import java.net.URI;
 
 /**
  *
@@ -22,7 +25,18 @@ public class Home extends javax.swing.JFrame {
         getContentPane().setBackground(m);
         initComponents();
     }
-
+    
+    
+    public void sendMail(String to, String subject, String body) throws IOException {
+        String message = "mailto:"+to+"?subject="+subject+"&body="+body+"&attachment=c:/Update8.txt";
+        URI uri = URI.create(message);
+        if (Desktop.isDesktopSupported()) {
+            Desktop desktop = Desktop.getDesktop();
+            if (desktop.isSupported(Desktop.Action.MAIL)) {
+                desktop.mail(uri); // alternately, pass a mailto: URI in here
+            }
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,23 +52,23 @@ public class Home extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel1.setForeground(java.awt.Color.white);
-        jLabel1.setText("Mong: Empowering Citizens to Make A Change");
+        jLabel1.setText("Project Title");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(59, 59, 59)
+                .addGap(319, 319, 319)
                 .addComponent(jLabel1)
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(342, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(37, 37, 37)
                 .addComponent(jLabel1)
-                .addContainerGap(293, Short.MAX_VALUE))
+                .addContainerGap(288, Short.MAX_VALUE))
         );
 
         pack();
